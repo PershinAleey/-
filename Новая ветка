@@ -1,7 +1,285 @@
-echo "# -" >> README.md 
-git init 
-git add README.md 
-git commit -m "первый коммит" 
-git branch -M main 
-git remote add origin https://github.com/PershinAleey/-.git
- git push -u origin main
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ассоциация «Перспектива» — коллаборации дизайнеров, архитекторов и поставщиков</title>
+<meta name="description" content="Ассоциация архитекторов, дизайнеров и строителей «Перспектива» — мероприятия, Case Design, разборы, выставки, продвижение и база дизайнеров."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%236b4c3b'/%3E%3Ctext x='50' y='58' font-family='Arial, sans-serif' font-size='56' fill='%23fff' text-anchor='middle'%3E%D0%9F%3C/text%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--brown:#6B4C3B;--brown-deep:#55392b;--beige:#F6EFE8;--muted:#71615a;--dark:#222021;--card:#ffffff;--glass: rgba(107,76,59,0.06);--radius:14px;--container:1150px;}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--beige) 0%, #fff 60%);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--dark);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:var(--container);margin:0 auto;padding:28px}
+  header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,0.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,0.04)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+  .brand{display:flex;gap:14px;align-items:center}
+  .logo-box{width:54px;height:54px;border-radius:10px;background:linear-gradient(180deg,var(--brown) 0%,var(--brown-deep) 100%);display:grid;place-items:center;color:#fff;font-weight:800;font-size:26px;box-shadow:0 8px 30px rgba(107,76,59,0.12)}
+  .brand-text .title{font-weight:700;font-size:14px}
+  .brand-text .sub{font-size:12px;color:var(--muted)}
+  .menu{display:flex;gap:14px;align-items:center}
+  .menu a{padding:8px 12px;border-radius:10px;font-size:14px}
+  .menu a:hover{background:var(--glass)}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;min-height:68vh;padding-top:28px}
+  .hero-left{padding:12px}
+  .hero-title{font-size:32px;line-height:1.04;margin:0 0 14px;font-weight:700;letter-spacing:-0.4px}
+  .hero-lead{color:var(--muted);font-size:16px;margin-bottom:20px;max-width:62ch}
+  .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:var(--brown);color:#fff;font-weight:700}
+  .cta-ghost{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(107,76,59,0.12);color:var(--brown);font-weight:600}
+  .hero-right{border-radius:18px;overflow:hidden;box-shadow:0 18px 60px rgba(20,20,20,0.08);border:1px solid rgba(0,0,0,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(245,238,232,0.6));}
+  .hero-media{height:100%;min-height:320px;background-size:cover;background-position:center;position:relative;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06));display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;}
+  section{padding:28px 0}
+  h2{font-size:20px;margin:0 0 12px}
+  p.small{color:var(--muted);font-size:14px;margin:0}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
+  .feature{background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.04)}
+  .formats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+  .format{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(180deg,rgba(107,76,59,0.02), rgba(255,255,255,0.0));padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,0.03)}
+  .format .pic{width:120px;height:86px;border-radius:8px;background-size:cover;background-position:center;flex-shrink:0}
+  .gallery{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-top:18px}
+  .big-img{height:320px;border-radius:12px;background-size:cover;background-position:center;box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+  .small-img{height:154px;border-radius:12px;background-size:cover;background-position:center}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+  .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+  .contact-wrap{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px}
+  form{display:grid;gap:10px}
+  input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);font-size:14px;background:#fff}
+  button[type="submit"]{padding:12px 16px;border-radius:10px;border:0;background:var(--brown);color:#fff;font-weight:700;cursor:pointer}
+  footer{margin-top:28px;padding:28px 0;color:var(--muted);font-size:13px;border-top:1px solid rgba(0,0,0,0.04)}
+  @media (max-width:1000px){.hero{grid-template-columns:1fr; text-align:left}.hero-right{order:-1}.features{grid-template-columns:repeat(2,1fr)}.formats{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr}.menu{display:none}}
+  @media (max-width:600px){.brand-text .title{font-size:13px}.hero-title{font-size:22px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Главная навигация">
+      <div class="brand">
+        <div class="logo-box" aria-hidden="true">П</div>
+        <div class="brand-text">
+          <div class="title">Ассоциация архитекторов, дизайнеров и строителей «Перспектива»</div>
+          <div class="sub">Коллаборации, мероприятия и развитие бизнеса</div>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Меню">
+        <a href="#about">О нас</a>
+        <a href="#formats">Форматы</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#pricing">Стоимость</a>
+        <a href="#contact">Стать резидентом</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1 class="hero-title">Объединяем дизайнеров, архитекторов и поставщиков для роста и сильных коллабораций</h1>
+        <p class="hero-lead">Ассоциация «Перспектива» организует Case Design, профессиональные разборы и тематические встречи — место, где рождаются партнерства, проекты и новые возможности для бизнеса.</p>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta" href="#contact">Стать резидентом</a>
+          <a class="cta-ghost" href="#formats">Наши форматы</a>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:13px">
+          Контакт: <strong>Алексей</strong> <a href="tel:+79613308629" style="margin-left:8px;color:var(--brown);font-weight:600">+7 (961) 330-86-29</a>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="false">
+        <!-- HERO: локальный файл hero.jpg -->
+        <div class="hero-media" style="background-image:url('hero.jpg');">
+          <div class="hero-overlay">
+            <h4>Case Design • Разборы • Неформальные встречи</h4>
+            <p>Профильная аудитория, профессиональные фотографии и атмосфера делового общения.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>Кто мы</h2>
+      <p class="small" style="margin-top:8px">Ассоциация архитекторов, дизайнеров и строителей «Перспектива» объединяет профильных специалистов и компании-поставщики, создаёт площадку для обмена опытом, демонстраций и коллабораций.</p>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits">
+      <h2>Что даёт участие</h2>
+      <div class="features" style="margin-top:12px">
+        <div class="feature">
+          <h3>Выставки и демонстрации</h3>
+          <p>Показ образцов и каталогов на мероприятиях с целевой аудиторией дизайнеров.</p>
+        </div>
+        <div class="feature">
+          <h3>Спикерство и PR</h3>
+          <p>Выступления, мастер-классы и продвижение в социальных сетях ассоциации.</p>
+        </div>
+        <div class="feature">
+          <h3>База и контакты</h3>
+          <p>Списки гостей, обработка контактов и прямой доступ к дизайнерам для дальнейшей работы.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMATS -->
+    <section id="formats">
+      <h2>Форматы мероприятий</h2>
+      <div class="formats">
+        <div class="format">
+          <div class="pic" style="background-image:url('hero.jpg');"></div>
+          <div>
+            <h4>Разбор на Перспективу</h4>
+            <p>Экспертные разборы проектов, рассадка по столам и welcome zone. Посещаемость: 30–40 ведущих дизайнеров.</p>
+          </div>
+        </div>
+
+        <div class="format">
+          <div class="pic" style="background-image:url('hero.jpg');"></div>
+          <div>
+            <h4>Case Design</h4>
+            <p>Два ведущих дизайнера + компания-резидент — презентация кейсов, стенды и общение с профессиональной аудиторией (40–70 гостей).</p>
+          </div>
+        </div>
+
+        <div class="format">
+          <div class="pic" style="background-image:url('gallery.jpg');"></div>
+          <div>
+            <h4>Неформальные встречи</h4>
+            <p>Квиз, «Мафия», командообразование — закрытая атмосфера для глубоких коммуникаций (до 25 дизайнеров).</p>
+          </div>
+        </div>
+
+        <div class="format">
+          <div class="pic" style="background-image:url('gallery.jpg');"></div>
+          <div>
+            <h4>Мероприятия у резидентов</h4>
+            <p>Мы проводим мероприятия на вашей площадке: организация, продвижение и привлечение профессиональной аудитории.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>Галерея — ощущение наших мероприятий</h2>
+      <div class="gallery">
+        <div class="big-img" style="background-image:url('hero.jpg');"></div>
+        <div style="display:grid;gap:12px">
+          <div class="small-img" style="background-image:url('gallery.jpg');"></div>
+          <div class="small-img" style="background-image:url('gallery.jpg');"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <h2>Стоимость резидентства</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Условия</h3>
+          <p class="small">Вступительный взнос — <strong>150 000 ₽</strong></p>
+          <p class="small">Ежемесячная плата — <strong>20 000 ₽</strong> (+ 1 месяц в подарок)</p>
+        </div>
+        <div class="card">
+          <h3>Дополнительно</h3>
+          <ul class="small" style="padding-left:18px;margin:6px 0 0;">
+            <li>Реферальная программа: 3 месяца бесплатно за нового партнёра</li>
+            <li>Возможность заморозки членства — до 3 месяцев в год</li>
+            <li>Пост-поддержка: reels, освещение, добавление в списки партнёров</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AFTER -->
+    <section>
+      <h2>После подписания договора</h2>
+      <div class="card" style="margin-top:12px">
+        <ul class="small" style="padding-left:18px;margin:6px 0 0;">
+          <li>1 месяц адаптации в подарок</li>
+          <li>Назначение Бадди — партнёра для адаптации</li>
+          <li>Съёмка обзора вашего бизнеса в рубрике «В гостях у Резидента»</li>
+          <li>Объявление нового партнёра на первых 3 мероприятиях</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Стать резидентом</h2>
+      <p class="small" style="margin-top:8px">Оставьте заявку — мы свяжемся в течение рабочего дня.</p>
+
+      <div class="contact-wrap">
+        <div class="card">
+          <form id="leadForm" autocomplete="off" aria-label="Форма заявки">
+            <label class="small">Имя*</label>
+            <input type="text" id="name" name="name" required placeholder="Иван Иванов"/>
+            <label class="small">Телефон*</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+7 (_) _-_-_"/>
+            <label class="small">Компания*</label>
+            <input type="text" id="company" name="company" required placeholder="Название компании"/>
+            <label class="small">Комментарий</label>
+            <textarea id="message" name="message" rows="4" placeholder="Коротко о вашей деятельности (не обязательно)"></textarea>
+
+            <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+              <button type="submit">Отправить заявку</button>
+              <div id="status" aria-live="polite" style="color:var(--muted);font-size:13px"></div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="card" style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+          <div>
+            <strong>Контакт</strong>
+            <div style="margin-top:6px">Алексей — <a href="tel:+79613308629" style="color:var(--brown)">+7 (961) 330-86-29</a></div>
+          </div>
+
+          <div>
+            <strong>Соцсети</strong>
+            <div class="small" style="margin-top:6px">Мы можем добавить ссылки на Instagram / VK / YouTube — пришлите ссылки, и я размещу.</div>
+          </div>
+
+          <div class="small">После отправки заявки мы свяжемся с вами для обсуждения условий и ближайшего мероприятия.</div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> Ассоциация «Перспектива»</div>
+        <div class="small">Премиальная презентация мероприятий и профессиональное комьюнити</div>
+      </div>
+    </footer>
+  </main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function(){
+    const form = document.getElementById('leadForm');
+    const status = document.getElementById('status');
+    const endpoint = ''; // вставьте endpoint для реальной отправки (Formspree или ваш API)
+    function validatePhone(v){const digits = v.replace(/\D/g,'');return digits.length >= 6;}
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.style.color = 'var(--muted)';
+      status.textContent = 'Проверка…';
+      const data = { name: form.name.value.trim(), phone: form.phone.value.trim(), company: form.company.value.trim(), message: form.message.value.trim() };
+      if(!data.name || !data.phone || !data.company){status.style.color='crimson';status.textContent='Заполните обязательные поля';return;}
+      if(!validatePhone(data.phone)){status.style.color='crimson';status.textContent='Проверьте телефон';return;}
+      if(!endpoint){setTimeout(()=>{status.style.color='green';status.textContent='Спасибо! Ваша заявка отправлена. Мы свяжемся с вами.';form.reset();},700);return;}
+      try{
+        const resp = await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body: JSON.stringify(data)});
+        if(resp.ok){status.style.color='green';status.textContent='Спасибо! Ваша заявка отправлена.';form.reset();}
+        else{const json = await resp.json().catch(()=>({}));status.style.color='crimson';status.textContent = json.error || 'Ошибка отправки';}
+      }catch(err){status.style.color='crimson';status.textContent = 'Ошибка сети. Попробуйте позже.';}
+    });
+  })();
+</script>
+</body>
+</html>
